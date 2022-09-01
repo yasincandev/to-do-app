@@ -1,12 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddTodo from "./components/AddTodo";
 import TodoList from "./components/TodoList";
 
 function App() {
-  const [todoList, setTodoList] = useState([]);
+  const [todoList, setTodoList] = useState(
+    JSON.parse(localStorage.getItem("task")) || []
+  );
   const [newTask, setNewTask] = useState("");
 
+  useEffect(() => {
+    localStorage.setItem("task", JSON.stringify(todoList));
+  }, [todoList]);
+
   const handleChange = (e) => {
+    e.preventDefault();
     setNewTask(e.target.value);
   };
 
