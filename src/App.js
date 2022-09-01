@@ -1,25 +1,59 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import AddTodo from "./components/AddTodo";
+import TodoList from "./components/TodoList";
 
 function App() {
+  const [todoList, setTodoList] = useState([]);
+  const [newTask, setNewTask] = useState("");
+
+  const handleChange = (e) => {
+    setNewTask(e.target.value);
+  };
+
+  const addTask = () => {
+    const task = {
+      id: new Date().getTime(),
+      taskName: newTask,
+      completed: false,
+    };
+    setTodoList([...todoList, task]);
+    setNewTask("");
+  };
+
+  const deleteTask = (id) => {
+    setTodoList(todoList.filter((task) => task.id !== id));
+  };
+
+  const completeTask = (id) => {
+    setTodoList(
+      todoList.map((task) => {
+        if (task.id === id) {
+          return { ...task, completed: true };
+        } else {
+          return task;
+        }
+      })
+    );
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <AddTodo handleChange={handleChange} addTask={addTask} value={newTask} />
+      <div className="list-container">
+        {todoList.map((task) => {
+          return (
+            <TodoList
+              key={task.id}
+              completed={task.completed}
+              completeTask={completeTask}
+              deleteTask={deleteTask}
+              taskName={task.taskName}
+              id={task.id}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }
-
 export default App;
