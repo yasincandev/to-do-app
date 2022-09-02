@@ -166,13 +166,39 @@ body {
     display: flex;
     justify-content: center;
   }
+
+  .todo-input {
+    width: 80%;
+  }
+
+  .header {
+    font-size: 1.5rem;
+  }
 }
 
 @media screen and (max-width: 500px) {
   .todo-input {
     width: 90%;
   }
+
+  .header {
+    font-size: 1.3rem;
+  }
   .add-btn {
-    width: 100%;
+    width: 80%;
+    padding: 5px;
+    font-size: 20px;
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
+
+  .todo-btn {
+    max-width: 100%;
+  }
+
+  .todo-nobullet {
+    font-size: 14px;
   }
 }
