@@ -50,10 +50,10 @@ function App() {
         {todoList.map((task) => {
           return (
             <TodoList
-              key={task.id}
-              completed={task.completed}
               completeTask={completeTask}
               deleteTask={deleteTask}
+              completed={task.completed}
+              key={task.id}
               taskName={task.taskName}
               id={task.id}
             />
