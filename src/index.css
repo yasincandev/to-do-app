@@ -76,16 +76,6 @@ body {
   transition: 0.5s;
 }
 
-.add-btn:hover {
-  padding-right: 24px;
-  padding-left: 8px;
-}
-
-.add-btn:hover:after {
-  opacity: 1;
-  right: 10px;
-}
-
 .list-container {
   width: 70%;
   padding: 30px 30px;
@@ -189,7 +179,24 @@ body {
     padding: 5px;
     font-size: 20px;
   }
+  .add-btn:after {
+    content: "»";
+    position: absolute;
+    opacity: 0;
+    top: 5px;
+    right: -20px;
+    transition: 0.5s;
+  }
 
+  .add-btn:hover {
+    padding-right: 24px;
+    padding-left: 8px;
+  }
+
+  .add-btn:hover:after {
+    opacity: 1;
+    right: 10px;
+  }
   .buttons {
     flex-direction: column;
   }
