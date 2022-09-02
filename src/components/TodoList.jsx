@@ -22,7 +22,7 @@ const TodoList = (props) => {
           className="todo-btn"
           onClick={() => props.completeTask(props.id)}
         >
-          <i className="fa-solid fa-check"></i>
+          <i className="fa-regular fa-square-check"></i>
         </button>
       </div>
     </div>
